@@ -13,12 +13,21 @@ public class UnitConverterTest {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-		FCconverter FtoC = new FCconverter();
-		System.out.printf("%5.2f in Fahrenheit is %5.2f Celsius\n", 70.0, FtoC.convert(70.0));
-		
-		CFconverter CtoF = new CFconverter();
-		System.out.printf("%5.2f in Celsius is %5.2f Fahrenheit\n", 20.0, CtoF.convert(20.0));
-		
+        /**
+         * Creating UnitConverter object
+         */
+        UnitConverter unit = new UnitConverter();
+	System.out.printf("%5.2f in Fahrenheit is %5.2f Celsius\n", 70.0, unit.convert(70.0));
+	
+        
+	unit.setUnitType(new CFconverter());
+        System.out.printf("%5.2f in Celsius is %5.2f Fahrenheit\n", 20.0, unit.convert(20.0));
+        
+        unit.setUnitType(new KgToPoundConverter());
+        System.out.printf("%5.2f in Kilograms is %5.2f Pounds\n", 56.0, unit.convert(56.0));
+	
+        unit.setUnitType(new PoundToKgConverter());
+        System.out.printf("%5.2f in Kilograms is %5.2f Pounds\n", 125.0, unit.convert(125.0));
 	}
 
 }
